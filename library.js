@@ -1,6 +1,6 @@
 const make= document.querySelector("button")
 
-
+make.addEventListener("click")
 
 
 function Book(page, title, author) {
