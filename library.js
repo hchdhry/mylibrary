@@ -1,6 +1,24 @@
 const make= document.querySelector("button")
+make.addEventListener('click', function(event){
+  event.preventDefault();
+  const authorValue = author.value;
+  const titleValue = title.value;
+  const pageValue = page.value;
+  if(authorValue !== "" && titleValue !== "" && pageValue !== ""){
+  addToLibrary(pageValue,titleValue,authorValue)
+  createbook()
+  }
+  else{
+    alert("Please fill in all fields.");
+  }
+});
 
-make.addEventListener("click")
+
+
+
+
+
+
 
 
 function Book(page, title, author) {
@@ -16,28 +34,29 @@ function Book(page, title, author) {
     library.push(newBook);
   }
   
-  addToLibrary(300,"Yee", "Wee");
-  addToLibrary(300,"Yee", "Wee");
-  addToLibrary(300,"Yee", "Wee");
+
 
   const bookList = document.getElementById("book-list");
-function createbook(){
-  for (let i = 0; i < library.length; i++) {
-    const book = library[i];
-    const row = document.createElement("tr");
-    const titleCell = document.createElement("td");
-    const authorCell = document.createElement("td");
-    const pageCell = document.createElement("td");
+  function createbook() {
+    bookList.innerHTML = ''; 
   
-    titleCell.textContent = book.title;
-    authorCell.textContent = book.author;
-    pageCell.textContent = book.page;
+    for (let i = 0; i < library.length; i++) {
+      const book = library[i];
+      const row = document.createElement('tr');
+      const titleCell = document.createElement('td');
+      const authorCell = document.createElement('td');
+      const pageCell = document.createElement('td');
   
-    row.appendChild(titleCell);
-    row.appendChild(authorCell);
-    row.appendChild(pageCell);
+      titleCell.textContent = book.title;
+      authorCell.textContent = book.author;
+      pageCell.textContent = book.page;
   
-    bookList.appendChild(row);
+      row.appendChild(titleCell);
+      row.appendChild(authorCell);
+      row.appendChild(pageCell);
+  
+  
+  
+      bookList.appendChild(row);
+    }
   }
-}
-createbook()
